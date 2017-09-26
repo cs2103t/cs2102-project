@@ -59,7 +59,7 @@ def exec_schema_change(index, sql):
         cursor.execute(update_schema_table, (index, sql))
 
     if config.get_config('DEBUG'):
-        print "Executed: (%s, %s)" % (index, sql)
+        print ("Executed: (%s, %s)" % (index, sql))
 
 
 def latest_schema():
@@ -100,7 +100,7 @@ def check_schema():
 
     if max_index != latest_executed_schema:
         if config.get_config('DEBUG'):
-            print "SCHEMA NOT UP-TO-DATE, UPDATE SCHEMA."
+            print ("SCHEMA NOT UP-TO-DATE, UPDATE SCHEMA.")
         return False
 
     return True
