@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="col-md-8">
+    <div class="panel row">
+        <h2>{{ listing.title }}</h2>
+        <p>
+            {% for c in categories %}
+                <a href='/search?cat={{ c.label | upper }}' class="large cat-pills label label-primary ">
+                    {{ c.label | upper }}
+                </a>
+            {% endfor %}
+        </p>
+        <p>{{ listing.description }}</p>
+        {% if logged_in and logged_in_uid == listing.owner_id %}
+            <p><b>You are the owner.</b> <a href="/listing/{{ listing.lid }}/edit">Edit listing</a></p>
+        {% elif is_admin %}
+            <p><b>You are an admin.</b> <a href="/listing/{{ listing.lid }}/edit">Edit listing</a></p>
+        {% endif %}
+    </div>
+    <div class="row">
+        <ul class="nav nav-tabs" id='listingTabs'>
+            <li class="active"><a href="#commentTab" data-toggle="tab">Comments</a></li>
+            <li><a href="#relatedTab" data-toggle="tab">Related Listings</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="commentTab">
+                <p>{% include 'partials/comments.html' %}</p>
+            </div>
+            <div class="tab-pane" id="relatedTab">
+                <p>
+                    {% for l in related_listings %}
+                        {% include 'partials/single_listing.html' %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    {% if logged_in_uid != listing.owner_id %}
+        {% include 'partials/listing_sidebar.html' %}
+    {% endif %}
+</div>
+{% endblock %}

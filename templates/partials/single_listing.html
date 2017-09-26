@@ -1,0 +1,31 @@
+<div class="media listing">
+    <a class="pull-left" href="#">
+        <img class="media-object" src="https://image.flaticon.com/icons/png/128/189/189093.png">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">
+            <a href="/listing/{{ l.lid }}">{{ l.title }}</a>
+        </h4>
+        <p>{{ l.description }}</p>
+        <div class="progress">
+		<div class="progress-bar progress-success">
+		</div>
+	</div>
+        <p>
+            {% for c in l.categories %}
+                <a href='/search?cat={{ c.label | upper }}' class="cat-pills label label-primary ">
+                    {{ c.label | upper }}
+                </a>
+            {% endfor %}
+        </p>
+        <div class='meta'>
+            <span>{{ l.create_time | datetime }}</span>
+            &middot;
+            <span><a href="/user/{{ l.owner_id}}">{{ l.name | title }}</a></span>
+            &middot;
+            <span>fund raised: {{ l.comment_count }}</span>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>

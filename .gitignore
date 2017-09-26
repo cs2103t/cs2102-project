@@ -1,0 +1,4 @@
+*.pyc
+theenv/
+venv/
+dev.sqlite

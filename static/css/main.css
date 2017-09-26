@@ -1,0 +1,31 @@
+#searchInput {
+	width: 400px;
+	min-width: 100%;
+	max-width: 100%;
+}
+
+/* To prevent fixed nav from overlapping content. */
+body {
+	padding-top: 70px;
+}
+
+.page-header {
+	margin-top: 0px;
+}
+
+.listing {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: solid 1px #eee;
+}
+
+.top-buffer {
+	margin-top:20px;
+}
+
+.cat-pills {
+	margin: 0 2px;
+}
+.large {
+	font-size: 1.1em;
+}
