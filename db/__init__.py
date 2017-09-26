@@ -1,6 +1,5 @@
 import psycopg2
 #import sqlite3
-#hi im daniel
 import os
 import config
 import schema
