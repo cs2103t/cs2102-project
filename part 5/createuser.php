@@ -63,12 +63,12 @@
   </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
-    <form id="part1" method ="post" onsubmit="return validate()" action = "create.php">
+    <form id="part1" method ="post" onsubmit="return validate()" action = "create.php" >
     <h1>Title :  <input type="text" name="project_name" id="project_name" ></h1>
     <hr>
-    <label>Description</label>
+    <h1>Description</h1>
     <br>
-    <textarea name="description" id="description" form="part1" ></textarea>
+    <input type="text" name="description" id="description" >
   </section>
   <!-- Links to Social network accounts -->
   <aside class="socialNetworkNavBar">
@@ -105,7 +105,6 @@
   <aside class="externalResourcesNav">
     <span class="stretch"></span>
     <div class="externalResources"><input type="submit" name="create" value="create" /> </div>
-    
       </form>
   </aside>
   </section>

@@ -63,16 +63,16 @@
   <!-- Identity details -->
   <section class="profileHeader"> 
     <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
-    <?php 
+    <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $result = pg_query($db, "SELECT * FROM projects 
-        	where creator = '$_POST[username]' AND project_name = '$POST[project_name]' ");	// Query template
-        $row    = pg_fetch_row($result) ; ?>	
-     <h1>Title :  <input type="text" name="project_name" id="project_name" value =<?php echo $row[0] ?>></h1>
+        $result = pg_query($db, "SELECT * FROM project 
+        	where creator = '$_POST[email]' AND project_name = '$_POST[title]' ");		// Query template
+        $row    = pg_fetch_assoc($result) ; ?>	
+    <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?> " ></h1>
     <hr>
-    <label>Description</label>
+    <h1>Description :</h1>
     <br>
-    <textarea name="description" id="description" form="part1" ><?php echo $row[8] ? ></textarea>
+    <textarea name="description" id="description" form="part1" ><?php echo $row["description"] ?></textarea>
   </section>
   <!-- Links to Social network accounts -->
   <aside class="socialNetworkNavBar">
@@ -98,19 +98,13 @@
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
-    <?php 
+    <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
+      <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $result = pg_query($db, "SELECT * FROM projects 
-        	where creator = '$_POST[username]' AND project_name = '$POST[project_name]' ");	// Query template
-        $row    = pg_fetch_row($result) ; ?>	
-        <p><span>Email :</span><input type="text" name="creator" id="creator" value=<?php echo $row[1] ?> > </p>
-        <p><span>created Date : </span><input type="text" name="created" id="created" value=<?php echo $row[4] ?>></p>
-        <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value=<?php echo $row[5] ?>></p>
-        <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value=<?php echo $row[6] ?>></p>
-        <p><span>funds needed: </span> <input type="text" name="target" id="target" value=<?php echo $row[3] ?> ></p>
-        <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value=<?php echo $row[2] ?> ></p>
-        <p><span>status: </span> <input type="text" name="completed" id="completed" value=<?php echo $row[7] ?> ></p>
-        <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value=<?php echo $row[9] ?> ></p>
+        $result = pg_query($db, "SELECT * FROM project 
+        	where creator = '$_POST[email]' AND project_name = '$_POST[title]' ");		// Query template
+        $row    = pg_fetch_assoc($result) ; ?>	
+      
         </form>
     </div>
   <aside class="externalResourcesNav">
