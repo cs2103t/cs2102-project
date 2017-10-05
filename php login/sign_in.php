@@ -17,13 +17,9 @@
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['user_type'] = $user_type;
-                echo "Sign in succesful!";
-                if($user_type ==='T') {
-                    <script type="text/javascript">window.location = "http://localhost:8080/demo/mainpage.php"</script>;<?php
-                }
-                else {?>
-<script type="text/javascript">window.location = "http://localhost:8080/demo/mainpage.php"</script>; <?php
-                }
+                echo "Sign in succesful!";?>
+                <script type="text/javascript">window.location = "http://localhost:8080/demo/mainpage.php"</script>;<?php
+           
             }
     
             else {
