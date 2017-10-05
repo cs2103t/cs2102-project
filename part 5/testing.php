@@ -17,6 +17,10 @@
     <label>email</label><input type ="text" name ="email" id ="var2">
     <input type="submit" name ="search" value ="search" >
 </form>
+    <form method ="post" action="createuser.php">
+        <label>new project?</label>
+        <input type="submit" name="redirect" value = "create new project" >
+    </form>
 <?php
 // Create connection
     
