@@ -14,14 +14,15 @@
             $result = pg_query($db, "SELECT * FROM users WHERE email = '$email' AND password = '$password' AND  is_admin = '$user_type'");
             $row    = pg_fetch_row($result);
             if ($row[0]) {
+                session_start();
+                $_SESSION['email'] = $email;
+                $_SESSION['user_type'] = $user_type;
                 echo "Sign in succesful!";
                 if($user_type ==='T') {
-                    //<a href = 'admin_page.php'></a>
-                    echo "You are a admin";
+                    <script type="text/javascript">window.location = "http://localhost:8080/demo/mainpage.php"</script>;<?php
                 }
-                else {
-                    //<a href = 'user_page.php'></a>
-                    echo " You are a user";
+                else {?>
+<script type="text/javascript">window.location = "http://localhost:8080/demo/mainpage.php"</script>; <?php
                 }
             }
     
