@@ -152,21 +152,20 @@
     <script>
         // get funds raised from pbt = progress bar text
         var funds_raised= 0; // i set it to 0 first
+        var funds_n =document.getElementById("target");
+        var funds_needed =parseInt(funds_n.value);
         function movin(){
-            function get_value(){
-                var ans=document.getElementById("funds").value;
-                return ans;
-            }
-            funds_raised +=parseInt(get_value());
-            funds_raised = parseInt(funds_raised);
+            var funds_r=document.getElementById("funds");
+            funds_raised +=parseInt(funds_r.value);
+            var funds_pcent = parseFloat(funds_raised)/parseFloat(funds_needed);;
             alert(funds_raised);
             if (funds_raised >=100){
                 funds_raised=100;
             }
             var pbt = document.getElementById("pbt");
             var pb = document.getElementById("pb");
-            pb.style.width = funds_raised +"%";
-            pbt.innerHTML = funds_raised +"%";
+            pb.style.width = funds_pcent*100 +"%";
+            pbt.innerHTML = funds_pcent*100 +"%";
         }
     </script>
   </aside>
