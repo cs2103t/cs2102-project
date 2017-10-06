@@ -42,6 +42,7 @@
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
 </head>
+
 <body>
 <!-- Header content -->
 <header>
@@ -56,22 +57,18 @@
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
         <! -- include from user data -->
-        <span>User: <input type="text" name = "user" id="user" value =<?php session_start(); echo $_SESSION['email']; ?> ></span>
+        <?php include 'handler.php'; ?>
+        <span>User: <input type="text" name = "user" id="user" ></span>
     </form> 
   </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
-    <form name="part3" id="part3" method ="post" action = "handler.php">
-      <?php
-        $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[username]' AND project_name = '$_POST[var1]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>	
-    <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
+    <form name="part2" id="part2" method ="post" action = "create.php" >
+    <h1>Title :  <input type="text" name="project_name" id="project_name" ></h1>
     <hr>
-    <h2>Description :</h2>
-    <textarea name="description" id="description" form="part3"><?php echo $row["description"] ?></textarea>
-
+    <h1>Description</h1>
+    <br>
+    <textarea name="description" id="description" form="part2"></textarea>
   </section>
   <!-- Links to Social network accounts -->
   <aside class="socialNetworkNavBar">
@@ -97,22 +94,17 @@
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
-     <?php
-        $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[username]' AND project_name = '$_POST[var1]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>	
-      <p><span>Email :</span><input type="text" name="creator" id="creator" value="<?php echo $row["creator"] ?>" > </p>
-      <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
-      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
-      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
-      <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
-      <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
-      <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
-      <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
+      <p><span>Email :</span><input type="text" name="creator" id="creator"  > </p>
+      <p><span>created Date : </span><input type="text" name="created" id="created" ></p>
+      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" ></p>
+      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" ></p>
+      <p><span>funds needed: </span> <input type="text" name="target" id="target"  ></p>
+      <p><span>funds raised: </span> <input type="text" name="raised" id="raised"  ></p>
+      <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" ></p>
     </div>
   <aside class="externalResourcesNav">
-    <div class="externalResources"><input type="submit" name="update" value="update" /> </div>
+    <span class="stretch"></span>
+    <div class="externalResources"><input type="submit" name="create" value="create" /> </div>
       </form>
   </aside>
   </section>

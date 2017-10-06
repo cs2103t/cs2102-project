@@ -4,7 +4,7 @@
     // each variable to be displayed
     // when user select a project that exist
     if (isset($_POST['update'])) {	// Submit the update SQL command
-        $query ="UPDATE project SET 
+    $query ="UPDATE project SET 
 	description = '$_POST[description]',
 	created = '$_POST[created]' ,
 	project_start = '$_POST[project_start]',
@@ -13,7 +13,7 @@
 	raised = '$_POST[raised]' ,
 	completed = '$_POST[completed]' ,
 	bankinfo = '$_POST[bankinfo]'  WHERE creator ='$_POST[creator]'AND project_name= '$_POST[project_name]' " ;
-        $result = pg_query($db, $query );
+    $result = pg_query($db, $query );
     if (!$result) {
         echo "Update failed!!";
     } else {
