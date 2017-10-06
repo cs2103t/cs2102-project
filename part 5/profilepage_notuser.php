@@ -112,11 +112,63 @@
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
     </div>
-  <aside class="externalResourcesNav">
-      <form id="part2" method ="post" onsubmit = "return validate()" action = "handler.php">
-    <div class="externalResources"><input type="text" name="funds" id= "funds" > </div>
-    <div class="externalResources"><input type="submit" name="donate" value="donate" /> </div>
       </form>
+  <aside class="externalResourcesNav">
+ <style>
+    #pbc {
+        width :300 px;
+        height :16px;
+        background: #FFF;
+        border: 2px solid red;
+    }
+    #pb{
+        position: relative;
+        top:0px;
+        background: #06C;
+        width:0%;
+        height :16px;
+        color:antiquewhite;
+        text-align: center;
+        }
+    #pbt{
+        position: relative;
+        top:-19px;
+        text-align: center;
+        color: #000;
+        padding: 4px;
+        height: 8px;
+        font-size: 12px;
+    }
+    </style>
+    <div id= "pbc">
+        <div id= "pb"></div>
+        <div id ="pbt"></div>
+    </div>
+    <form method="post" >
+        <p><input type ="text" name="funds" id= "funds"  >
+        <input type ="button" name="donate" id= "donate" value ="donate" onclick ="return movin();">
+        </p>
+    </form>
+    <script>
+        // get funds raised from pbt = progress bar text
+        var funds_raised= 0; // i set it to 0 first
+        function movin(){
+            function get_value(){
+                var ans=document.getElementById("funds").value;
+                return ans;
+            }
+            funds_raised +=parseInt(get_value());
+            funds_raised = parseInt(funds_raised);
+            alert(funds_raised);
+            if (funds_raised >=100){
+                funds_raised=100;
+            }
+            var pbt = document.getElementById("pbt");
+            var pb = document.getElementById("pb");
+            pb.style.width = funds_raised +"%";
+            pbt.innerHTML = funds_raised +"%";
+        }
+    </script>
   </aside>
   </section>
 </section>
