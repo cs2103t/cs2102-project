@@ -3,9 +3,13 @@
 <body>
 
 <form method ="post" action= "profile_page.php" >
+    <?php include 'sign_in.php';
+    session_start();
+    $email=$_SESSION['email'];
+    ?>
     <p> view your own projects</p>
     <br>
-    <label>username</label><input type ="text" name ="username" id ="username" >
+    <label>username</label><input type ="text" name ="username" id ="username" value =<?php session_start(); echo $_SESSION['email']; ?> >
     <label>password</label><input type="password" name ="password" id ="password">
     <label>title</label><input type ="text" name ="var1" id ="var1">
     <input type="submit" name ="search" value ="search" >
@@ -14,7 +18,7 @@
     <br>
     <p> view others </p>
     <label>title</label><input type ="text" name ="title" id ="var1">
-    <label>email</label><input type ="text" name ="email" id ="var2">
+    <label>email</label><input type ="text" name ="email2" id ="var2">
     <input type="submit" name ="search" value ="search" >
 </form>
     <form method ="post" action="createuser.php">

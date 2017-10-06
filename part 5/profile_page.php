@@ -56,7 +56,7 @@
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
         <! -- include from user data -->
-        <span>User: <input type="text" name = "user" id="user" value =<?php echo $user ?> ></span>
+        <span>User: <input type="text" name = "user" id="user" value =<?php session_start(); echo $_SESSION['email']; ?> ></span>
     </form> 
   </div>
   <!-- Identity details -->

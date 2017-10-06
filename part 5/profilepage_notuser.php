@@ -55,9 +55,9 @@
     <img src="file:///C|/Users/PENITENT/AppData/Roaming/Adobe/Dreamweaver CC 2017/en_US/Configuration/Temp/Assets/eamDCE6.tmp/AboutPageAssets/images/profilephoto.png" alt="sample"> </div>
   <div class="userinfo"> 
     <! -- user info -->
-    <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
+    <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
-        <span>User: <input type="text" name = "user" id="user" ></span>
+        <span>User: <input type="text" name = "user" id="user" value = <?php session_start(); echo $_SESSION['email']; ?> ></span>
     </form> 
   </div>
   <!-- Identity details -->
@@ -66,7 +66,7 @@
     <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[email]' AND project_name = '$_POST[title]' ");		// Query template
+        	where creator = '$_POST[email2]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
     <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?> " ></h1>
     <hr>
@@ -98,14 +98,19 @@
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
-    <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
       <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[email]' AND project_name = '$_POST[title]' ");		// Query template
+        	where creator = '$_POST[email2]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
-      
-        </form>
+      <p><span>Email :</span><input type="text" name="creator" id="creator" value="<?php echo $row["creator"] ?>" > </p>
+      <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
+      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
+      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
+      <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
+      <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
+      <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
+      <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
     </div>
   <aside class="externalResourcesNav">
       <form id="part2" method ="post" onsubmit = "return validate()" action = "handler.php">
