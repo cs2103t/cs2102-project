@@ -13,7 +13,7 @@
         'false', 
         '$_POST[description]',
 		'$_POST[bankinfo]', 
-        'http://www.indiantelevision.com/sites/drupal7.indiantelevision.co.in/files/images/internet-images/2016/04/25/Web-Series-Scripted.png')";
+        'http://tempusfilms.com/wp-content/uploads/2014/04/facebook_no_photo.jpg')";
 		$result = pg_query($db,$query);
 		if (!$result) {
             
