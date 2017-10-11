@@ -110,6 +110,7 @@
       <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
+      <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= "<?php echo $row["picture_url"] ?>" ></p>
     </div>
   <aside class="externalResourcesNav">
     <div class="externalResources"><input type="submit" name="update" value="update" /> </div>

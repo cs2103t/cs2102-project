@@ -12,7 +12,8 @@
 	target = '$_POST[target]',
 	raised = '$_POST[raised]' ,
 	completed = '$_POST[completed]' ,
-	bankinfo = '$_POST[bankinfo]'  WHERE creator ='$_POST[creator]'AND project_name= '$_POST[project_name]' " ;
+	bankinfo = '$_POST[bankinfo]',
+    picture_url = '$_POST[picture_url]' WHERE creator ='$_POST[creator]'AND project_name= '$_POST[project_name]' " ;
     $result = pg_query($db, $query );
     if (!$result) {
         echo "Update failed!!";
