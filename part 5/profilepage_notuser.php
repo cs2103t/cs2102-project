@@ -50,16 +50,20 @@
     <!-- Profile logo. Add a img tag in place of <span>. -->
       <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>LOGO</span></p>
   </div>
-  <div class="profilePhoto"> 
-    <!-- Profile photo --> 
-    <img src="file:///C|/Users/PENITENT/AppData/Roaming/Adobe/Dreamweaver CC 2017/en_US/Configuration/Temp/Assets/eamDCE6.tmp/AboutPageAssets/images/profilephoto.png" alt="sample"> </div>
-  <div class="userinfo"> 
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
         <span>User: <input type="text" name = "user" id="user" value = <?php session_start(); echo $_SESSION['email']; ?> ></span>
     </form> 
-  </div>
+  <div class="profilePhoto"> 
+    <!-- Profile photo --> 
+    <?php
+        $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
+        $result = pg_query($db, "SELECT * FROM project 
+        	where creator = '$_POST[email2]' AND project_name = '$_POST[title]' ");		// Query template
+        $row    = pg_fetch_assoc($result) ; ?>	
+    <img src="<?php echo $row["picture_url"] ?>" alt="picture" style="width:250px;height:228px;">  
+    </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
     <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">

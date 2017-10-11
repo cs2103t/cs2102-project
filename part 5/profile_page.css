@@ -58,11 +58,8 @@ header .userinfo input[type=text]{
     border: none;
 }
 header .profilePhoto {
-	background-color: rgba(237,237,237,1.00);
 	width: 259px;
-	border-radius: 50%;
 	height: 259px;
-	clear: both;
 }
 header .profileHeader input[id=description]{
     height: 200px;
