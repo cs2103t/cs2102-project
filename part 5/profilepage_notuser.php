@@ -72,7 +72,7 @@
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[email2]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
-    <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?> " ></h1>
+    <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
     <hr>
     <h1>Description :</h1>
     <br>
@@ -116,7 +116,6 @@
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
     </div>
-      </form>
   <aside class="externalResourcesNav">
  <style>
     #pbc {
@@ -147,30 +146,40 @@
     <div id= "pbc">
         <div id= "pb"></div>
         <div id ="pbt"></div>
-    </div>
-    <form method="post" >
-        <p><input type ="text" name="funds" id= "funds"  >
-        <input type ="button" name="donate" id= "donate" value ="donate" onclick ="return movin();">
-        </p>
+      </div>
+      <div>
+        <?php
+        include 'sign_in.php';
+        session_start();
+        $email=$_SESSION['email'];
+        $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
+        $result = pg_query($db, "SELECT * FROM project 
+        	where creator = '$_POST[email2]' AND project_name = '$_POST[title]' ");		// Query template
+        $row    = pg_fetch_assoc($result) ;
+        $q2 = "SELECT SUM(amount) as amt From invest WHERE creator= '$row[creator]' AND project_name= '$row[project_name]' ";
+        $results = pg_query($db,$q2); //find bank account
+        $rows = pg_fetch_assoc($results);
+        ?>
+        <label>donation amount</label><input type ="text" name="funds" id= "funds" value = <?php echo $rows["amt"]  ?> >
+        <br>
+        <label>date of donation</label><input type ="text" name="time" id= "time" >
+        <input type ="submit" name="donate" id= "donate" value ="donate">
+      </div>
     </form>
     <script>
         // get funds raised from pbt = progress bar text
-        var funds_raised= 0; // i set it to 0 first
-        var funds_n =document.getElementById("target");
-        var funds_needed =parseInt(funds_n.value);
-        function movin(){
-            var funds_r=document.getElementById("funds");
-            funds_raised +=parseInt(funds_r.value);
-            var funds_pcent = parseFloat(funds_raised)/parseFloat(funds_needed);;
-            alert(funds_raised);
-            if (funds_raised >=100){
-                funds_raised=100;
-            }
-            var pbt = document.getElementById("pbt");
-            var pb = document.getElementById("pb");
-            pb.style.width = funds_pcent*100 +"%";
-            pbt.innerHTML = funds_pcent*100 +"%";
+        var funds=document.getElementById("raised");
+        var funds_needed=document.getElementById("target");
+        var funds_i=parseFloat(funds.value);
+        var target = parseFloat(funds_needed.value);
+        var funds_pcent = funds_i/target;
+        if (funds_pcent >=1){
+            funds_pcent=1;
         }
+        var pbt = document.getElementById("pbt");
+        var pb = document.getElementById("pb");
+        pb.style.width = funds_pcent*100 +"%";
+        pbt.innerHTML = funds_pcent*100 +"%";
     </script>
   </aside>
   </section>
