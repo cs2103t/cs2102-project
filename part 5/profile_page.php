@@ -50,16 +50,17 @@
       <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>LOGO</span></p>
   </div>
     <! -- user info -->
-    <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
+    <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
         <span>User: <input type="text" name = "user" id="user" value =<?php session_start(); echo $_SESSION['email']; ?> ></span>
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
     <?php
+        session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[username]' AND project_name = '$_POST[var1]' ");		// Query template
+        	where creator = '$_SESSION[email]' AND project_name = '$_POST[var1]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
     <img src="<?php echo $row["picture_url"] ?>" alt="picture" style="width:250px;height:228px;"> 
   </div>
@@ -67,9 +68,10 @@
   <section class="profileHeader"> 
     <form name="part3" id="part3" method ="post" action = "handler.php">
       <?php
+        session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[username]' AND project_name = '$_POST[var1]' ");		// Query template
+        	where creator = '$_SESSION[email]' AND project_name = '$_POST[var1]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
     <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
     <hr>
@@ -102,10 +104,11 @@
     <hr class="sectionTitleRule2">
     <div class="section1Content">
      <?php
+        session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_POST[username]' AND project_name = '$_POST[var1]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>	
+        	where creator = '$_SESSION[email]' AND project_name = '$_POST[var1]' ");		// Query template
+        $row    = pg_fetch_assoc($result) ; ?>		
       <p><span>Email :</span><input type="text" name="creator" id="creator" value="<?php echo $row["creator"] ?>" > </p>
       <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
@@ -117,6 +120,7 @@
       <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= "<?php echo $row["picture_url"] ?>" ></p>
     </div>
   <aside class="externalResourcesNav">
+    <p><span>password: </span> <input type="password" name="password2" id="password2"></p>
     <div class="externalResources"><input type="submit" name="update" value="update" /> </div>
       </form>
   </aside>

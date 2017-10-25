@@ -9,8 +9,7 @@
     ?>
     <p> view your own projects</p>
     <br>
-    <label>username</label><input type ="text" name ="username" id ="username" value =<?php session_start(); echo $_SESSION['email']; ?> >
-    <label>password</label><input type="password" name ="password" id ="password">
+    <label>username : </label><?php session_start(); echo $_SESSION['email']; echo " | "; ?>
     <label>title</label><input type ="text" name ="var1" id ="var1">
     <input type="submit" name ="search" value ="search" >
     </form>

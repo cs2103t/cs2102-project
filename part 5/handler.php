@@ -5,6 +5,10 @@
     // each variable to be displayed
     // when user select a project that exist
     if (isset($_POST['update'])) {	// Submit the update SQL command
+    session_start();
+    $result = pg_query($db, "SELECT * FROM account WHERE account_email = '$_SESSION[email]' AND account_password = '$_POST[password2]' ");
+    $row    = pg_fetch_row($result);
+    if ($row[0]){
     $query ="UPDATE project SET 
 	description = '$_POST[description]',
 	created = '$_POST[created]' ,
@@ -16,10 +20,14 @@
 	bankinfo = '$_POST[bankinfo]',
     picture_url = '$_POST[picture_url]' WHERE creator ='$_POST[creator]'AND project_name= '$_POST[project_name]' " ;
     $result = pg_query($db, $query );
-    if (!$result) {
-        echo "Update failed!!";
-    } else {
-        echo "Update successful!";
+        if (!$result) {
+            echo "Update failed!!";
+        } else {
+            echo "Update successful!";
+        }
+    }
+    else{
+        echo "please do not alter other users projects thanks";
     }
     }
     if (isset($_POST['donate'])) {
