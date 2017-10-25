@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* Global Styles */
+
+input[type=submit]{
+    background-color:gainsboro;
+    display: block;
+    padding: 16px 32px;
+	margin-top: 0%;
+	margin-right: 0%;
+	margin-left: 26%;
+	margin-bottom: 0%;
+}
+/* Main Content sections */
+.mainContent .section1 {
+	display: block;
+}
+.section1 .sectionTitle {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.section1 .sectionTitleRule {
+	margin: 0 3% 0 0;
+	float: left;
+	clear: both;
+}
+.section1 .sectionTitleRule2 {
+	background-color: rgba(208,207,207,1.00);
+	height: 1px;
+	padding: 0px;
+}
+.mainContent .section1 .section1Content {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.mainContent .section1 .section1Content span {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.mainContent {
+	display: block;
+}
+.mainContent .externalResourcesNav .externalResources {
+	background-color: rgba(208,207,207,1.00);
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+}
+
+.stretch {
+	content: '';
+	display: inline-block;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+
+
+/* Media query for Mobile devices*/
+@media only screen and (min-width : 285px) and (max-width : 480px) {
+
+/* Main content sections */
+.mainContent .section1 {
+	text-align: center;
+	margin-bottom: 10%;
+}
+.section1 .section1Title {
+	text-align: center;
+}
+.section1 .sectionTitleRule {
+	width: 100%;
+}
+.section1 .sectionTitleRule2{
+	display: none;
+}
+.mainContent .section1 .section1Content {
+	display: inline-block;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+    font-weight: bold;
+	text-align: justify;
+}
+
+
+
+}
+
+/* Media Query for Tablets */
+@media only screen and (min-width : 481px) and (max-width : 1024px) {
+/* Main content and sections */
+.section1 .section1Title{
+	text-align: center;
+}
+.section1 .sectionTitleRule {
+	width: 100%;
+}
+.section1 .sectionTitleRule2{
+	display: none;
+}
+.mainContent .section1 .section1Content {
+	display: block;
+	margin: 0% 0% 0% 20%;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+
+}
+
+/* Desktops and laptops  */
+@media only screen and (min-width:1025px) {
+
+/* Main content sections */
+.section1 .sectionTitleRule {
+	width: 22.5%;
+}
+.mainContent .section1 .section1Content {
+	display: block;
+	margin-top: 0%;
+	margin-right: 0%;
+	margin-left: 26%;
+	margin-bottom: 0%;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+
+}
