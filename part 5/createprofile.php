@@ -50,17 +50,14 @@
     <!-- Profile logo. Add a img tag in place of <span>. -->
       <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>LOGO</span></p>
   </div>
+    <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
+        <! -- include from user data -->
+        <?php include 'sign_in.php'; ?>
+        <span>User:  <?php session_start(); echo $_SESSION['email']; ?></span>
+    </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
     <img src="file:///C|/Users/PENITENT/AppData/Roaming/Adobe/Dreamweaver CC 2017/en_US/Configuration/Temp/Assets/eamDCE6.tmp/AboutPageAssets/images/profilephoto.png" alt="sample"> </div>
-  <div class="userinfo"> 
-    <! -- user info -->
-    <form id="part1" method ="post" onsubmit="return validate()" action = "user.php">
-        <! -- include from user data -->
-        <?php include 'handler.php'; ?>
-        <span>User: <input type="text" name = "user" id="user" ></span>
-    </form> 
-  </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
     <form name="part2" id="part2" method ="post" action = "create.php" >
@@ -94,7 +91,9 @@
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
-      <p><span>Email :</span><input type="text" name="creator" id="creator"  > </p>
+        <?php include 'sign_in.php';
+        ?>
+      <p><span>Email : </span> <?php session_start(); echo $_SESSION['email'] ?> </p>
       <p><span>created Date : </span><input type="text" name="created" id="created" ></p>
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" ></p>
       <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" ></p>

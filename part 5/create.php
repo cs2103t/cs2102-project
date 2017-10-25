@@ -1,10 +1,12 @@
 <?php
+    include 'sign_in.php';
   	// Connect to the database. Please change the password in the following line accordingly
     $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");
     if (isset($_POST['create'])) {
+        session_start();
 		$query = "INSERT INTO project VALUES ( 
         '$_POST[project_name]', 
-        '$_POST[creator]',
+        '$_SESSION[email]',
         '$_POST[raised]', 
 		'$_POST[target]',
         '$_POST[created]',

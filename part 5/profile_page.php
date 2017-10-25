@@ -52,7 +52,7 @@
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
-        <span>User: <input type="text" name = "user" id="user" value =<?php session_start(); echo $_SESSION['email']; ?> ></span>
+        <span>User:  <?php session_start(); echo $_SESSION['email']; ?></span>
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
@@ -109,7 +109,7 @@
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_SESSION[email]' AND project_name = '$_POST[var1]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>		
-      <p><span>Email :</span><input type="text" name="creator" id="creator" value="<?php echo $row["creator"] ?>" > </p>
+      <p><span>Email :</span> <?php echo $row["creator"] ?> </p>
       <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
       <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
@@ -117,7 +117,7 @@
       <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
-      <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= "<?php echo $row["picture_url"] ?>" ></p>
+      <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= <?php echo $row["picture_url"] ?> ></p>
     </div>
   <aside class="externalResourcesNav">
     <p><span>password: </span> <input type="password" name="password2" id="password2"></p>
