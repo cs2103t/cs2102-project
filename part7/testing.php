@@ -59,13 +59,13 @@ while($row = pg_fetch_assoc($result)) {
     if($row[creator]==$_SESSION['email']){
         echo "<form method=post action=profile_page.php >
         <input type=hidden name=title value='$row[project_name]' >
-        <input type=submit name=submit value=move > ";
+        <input type=submit name=submit value=move ></form> ";
     }
     else{
         echo "<form method=post action=profilepage_notuser.php >
         <input type=hidden name=title2 value= '$row[project_name]' >
         <input type=hidden name=not value= '$row[creator]' >
-        <input type=submit name=submit value=go > ";
+        <input type=submit name=submit value=go ></form> ";
     }
     echo "</td>";
     echo "</tr>\n";

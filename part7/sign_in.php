@@ -19,7 +19,7 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['user_type'] = $user_type;
                 echo "Sign in succesful!";?>
-                <script type="text/javascript">window.location = "http://localhost/demo/part6/testing.php";</script><?php           
+                <script type="text/javascript">window.location = "http://localhost/demo/part7/testing.php";</script><?php           
             }
     
             else {
