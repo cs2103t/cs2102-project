@@ -1,23 +1,17 @@
 <!doctype html>
 <html>
-<body>
-
-<form method ="post" action= "testing.php" >
-    <?php include 'sign_in.php';
-    session_start();
-    $email=$_SESSION['email'];
-    ?>
-    <p> view your own projects</p>
-    <br>
-    <label>username : </label><?php session_start(); echo $_SESSION['email']; echo " | "; ?>
-    <label>title</label><input type ="text" name ="var1" id ="var1">
-    <input type="submit" name ="search" value ="search" >
+<header>
+    <! -- user info -->
+    <form id="part1" method ="post" onsubmit="return validate()">
+        <! -- include from user data -->
+        <span>User: <?php session_start(); echo $_SESSION['email']; ?> </span>
     </form>
+</header>
+<body>
     <form method ="post" action= "testing.php" >
     <br>
-    <p> view others </p>
-    <label>title</label><input type ="text" name ="titl" id ="var1">
-    <label>email</label><input type ="text" name ="email2" id ="var2">
+    <p> view projects </p>
+    <label>title : </label><input type ="text" name ="titl" id ="var1">
     <input type="submit" name ="search" value ="search" >
 </form>
     <form method ="post" action="createprofile.php">
@@ -31,7 +25,7 @@ session_start();
 $email=$_SESSION['email'];
 $db = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");
 if (isset($_POST['search'])){
-    $sql ="select * from project where lower(project_name) like '$_POST[titl]%' or upper(project_name) like '$_POST[title]%' ";
+    $sql ="select * from project where lower(project_name) like '$_POST[titl]%' or upper(project_name) like '$_POST[titl]%' ";
 }
 else{
     $sql="select * from project";
