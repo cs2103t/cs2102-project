@@ -14,24 +14,17 @@
 <section class="mainContent"> 
   <!-- Contact details -->
   <section class="section1">
-    <h2 class="sectionTitle">Login in page</h2>
+      <h2 class="sectionTitle">Login here or <a href="register.php"> Click here to register.</a></h2>
     <hr class="sectionTitleRule">
     <div class="section1Content">
-        <form name = "insert", action = "sign_in.php", method = "POST">
+        <form name = "insert" action = "sign_in.php" method = "POST">
         <li>E-mail </li>
         <li><input type = "text" name = "email"></li>
         <li>Password </li>
         <li><input type = "password" name = "password"></li>
-        <li>User Type<li>
-        <input type = "radio" name = "user_type" value = "T"> Admin
-        <input type = "radio" name = "user_type" value = "F"> User
         <li><input type = "submit" name = "submit" value = "login"></li>
 </form>
     </div>
-  <aside class="externalResourcesNav">
-    <div class="externalResources"><input type="submit" name="createuser" value="createuser" /> </div>
-      </form>
-  </aside>
   </section>
 </section>
 </body>

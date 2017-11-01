@@ -32,20 +32,22 @@
     }
     if (isset($_POST['donate'])) {
         session_start();
-        $email=$_SESSION['email'];
-        $q1 = "SELECT * from invest WHERE project_name ='$_POST[project_name]' AND creator = '$_POST[creator]' 
+        $title=$_SESSION['title'];
+        $creator=$_SESSION['creator'];
+        $email =$_SESSION['email'];
+        $q1 = "SELECT * from invest WHERE project_name ='$title' AND creator = '$creator' 
         AND account_email ='$email' ";
         $result = pg_query($db,$q1); //find bank account
         $row   = pg_fetch_assoc($result) ;
         $donation = $row[amount] + $_POST[funds];
         if ($row){ // means he donated before
             $query = "UPDATE invest SET amount = '$donation'
-            WHERE account_email ='$email'AND project_name ='$_POST[project_name]' AND creator = '$_POST[creator]'  "; 
+            WHERE account_email ='$email' AND project_name ='$title' AND creator = '$creator'  "; 
             $result = pg_query($db,$query);
             if (!$result) {
                 echo "donate failed";
             } else {
-                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$_POST[creator]' AND project_name= '$_POST[project_name]' ";
+                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
                     echo "donate successful!";
@@ -56,17 +58,15 @@
             }
         }
         else{
-            session_start();
-            $email=$_SESSION['email'];
-            $query = "INSERT INTO invest VALUES( '$email',
-            '$_POST[project_name]','$_POST[creator]', '$_POST[time]'
-            ,'$_POST[funds]') ";
+            $query = "INSERT INTO invest VALUES('$email',
+            '$title','$creator',
+            '$_POST[funds]') ";
             $result = pg_query($db,$query);
             if (!$result) {
                 echo "donate failed";
             } 
             else {
-                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$_POST[creator]' AND project_name= '$_POST[project_name]' ";
+                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
                     echo "donate successful!";

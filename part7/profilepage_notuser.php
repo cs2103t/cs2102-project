@@ -58,7 +58,11 @@
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
     <?php
-      
+        session_start();
+        $creator=$_POST['not'] ;
+        $title =$_POST['title2'];
+        $_SESSION['title']=$title;
+        $_SESSION['creator']=$creator;
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[not]' AND project_name = '$_POST[title2]' ");		// Query template
@@ -67,13 +71,13 @@
     </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
-    <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
+
     <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[not]' AND project_name = '$_POST[title2]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
-    <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
+    <h1>Title :  <?php echo $row["project_name"] ?></h1>
     <hr>
     <h1>Description :</h1>
     <br>
@@ -88,19 +92,23 @@
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
+        <form id="part2">
       <?php
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[not]' AND project_name = '$_POST[title2]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>	
+        $row    = pg_fetch_assoc($result) ; ?>
       <p><span>Email : </span> <?php echo $row["creator"] ?> </p>
-      <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
-      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
-      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
-      <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
-      <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
-      <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
-      <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
+      <p><span>created Date : </span><?php echo $row["created"] ?></p>
+      <p><span>Start Date : </span><?php echo $row["project_start"] ?></p>
+      <p><span>End Date: </span> <?php echo $row["project_end"] ?></p>
+      <p><span>funds needed: </span> <?php echo $row["target"] ?></p>
+      <input type="hidden" id="target" value =<?php echo $row["target"] ?> >
+      <p><span>funds raised: </span> <?php echo $row["raised"] ?></p>
+      <input type="hidden" id="raised" value =<?php echo $row["raised"] ?> >
+      <p><span>status: </span> <?php echo $row["completed"] ?></p>
+      <p><span>bank info: </span><?php echo $row["bankinfo"] ?></p>
+        </form>
     </div>
   <aside class="externalResourcesNav">
  <style>
@@ -134,19 +142,15 @@
         <div id ="pbt"></div>
       </div>
       <div>
+        <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
         <?php
         session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_SESSION[not]' AND project_name = '$_SESSION[title2]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ;
-        $q2 = "SELECT SUM(amount) as amt From invest WHERE creator= '$row[creator]' AND project_name= '$row[project_name]' ";
+        $q2 = "SELECT SUM(amount) as amt From invest WHERE creator= '$creator' AND project_name= '$title' ";
         $results = pg_query($db,$q2); //find bank account
         $rows = pg_fetch_assoc($results);
         ?>
         <label>donation amount</label><input type ="text" name="funds" id= "funds" value = <?php echo $rows["amt"]  ?> >
-        <br>
-        <label>date of donation</label><input type ="text" name="time" id= "time" >
         <input type ="submit" name="donate" id= "donate" value ="donate">
       </div>
     </form>
