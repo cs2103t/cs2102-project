@@ -8,7 +8,7 @@
     </form>
 </header>
 <body>
-    <form method ="post" action= "testing.php" >
+    <form method ="post" action= "mainpage.php" >
     <?php session_start();
         $page_l=$_SESSION['pagel']; // page lower limit
         ?>
@@ -26,11 +26,16 @@
         <input type="submit" name="redirect" value = "create new project" >
     </form>
     <br>
-    <form method ="post" action="deletion.php">
+<?php
+    session_start();
+    $is_admin=$_SESSION['is_admin'];
+    if($is_admin=='T'){
+        echo "<form method =post action=deletion.php >
         <label>remove a user</label>
-        <input type ="text" name="user_d" >
-        <input type="submit" name="delete_u" value ="delete user">
-    </form>
+        <input type =text name=user_d >
+        <input type=submit name=delete_u value =delete user> </form>";
+    }
+?>
 <?php
 // Create connection
 include 'sign_in.php';
@@ -40,6 +45,7 @@ $is_admin=$_SESSION['is_admin'];
 $_SESSION['pagel']=$page_l;
 $page_l=$_SESSION['pagel'];
 $db = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");
+
 if(empty($page_l)){
     $page_l=0;
 }

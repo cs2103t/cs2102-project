@@ -16,8 +16,11 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
         }
         }
     if(isset($_POST['delete_u'])){
+        
         $sql ="delete from invest where creator= '$_POST[user_d]' "; // delete all investments from project
         $result=pg_query($db,$sql);
+        $sql1 ="delete from invest where account_email= '$_POST[user_d]' "; // delete all investments from project
+        $result1=pg_query($db,$sql1);
         $sql2 ="delete from project where creator = '$_POST[user_d]' ";
         $result2 =pg_query($db,$sql2); 
         $sql3 ="select * from account where account_email = '$_POST[user_d]' ";
