@@ -1,5 +1,8 @@
 <?php
     include "sign_in.php";
+    session_start();
+    $is_admin=$_SESSION['is_admin'];
+    $override=$_SESSION['override'];
   	// Connect to the database. Please change the password in the following line accordingly
     $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
     // each variable to be displayed
@@ -8,7 +11,7 @@
     session_start();
     $result = pg_query($db, "SELECT * FROM account WHERE account_email = '$_SESSION[email]' AND account_password = '$_POST[password2]' ");
     $row    = pg_fetch_row($result);
-    if ($row[0]){
+    if ($row[0] || $is_admin == 'T'){
     $query ="UPDATE project SET 
 	description = '$_POST[description]',
 	created = '$_POST[created]' ,
@@ -18,7 +21,7 @@
 	raised = '$_POST[raised]' ,
 	completed = '$_POST[completed]' ,
 	bankinfo = '$_POST[bankinfo]',
-    picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[email]' AND project_name= '$_POST[project_name]' " ;
+    picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_POST[project_name]' " ;
     $result = pg_query($db, $query );
         if (!$result) {
             echo "Update failed!!";?>

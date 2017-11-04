@@ -168,8 +168,9 @@ while($row = pg_fetch_assoc($result)) {
     echo "<td>$row[target]</td>";
     echo "<td>$row[raised]</td>";
     echo "<td>";
-    if($row[creator]==$_SESSION['email']){
+    if($row[creator]==$_SESSION['email'] || $is_admin == 'T'){
         echo "<form method=post action=profile_page.php >
+        <input type=hidden name=owner value= '$row[creator]' >
         <input type=hidden name=title value='$row[project_name]' >
         <input type=submit name=submit value=move ></form> ";
     }

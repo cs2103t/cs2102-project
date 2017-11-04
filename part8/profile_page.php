@@ -53,6 +53,7 @@
     <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
         <span>User:  <?php session_start(); echo $_SESSION['email']; ?></span>
+        <div id="headerLinks"><a href="login2-css.php"> Logout </a></div>
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
@@ -60,7 +61,7 @@
         session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_SESSION[email]' AND project_name = '$_POST[title]' ");		// Query template
+        	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
     <img src="<?php echo $row["picture_url"] ?>" alt="picture" style="width:250px;height:228px;"> 
   </div>
@@ -69,9 +70,10 @@
     <form name="part3" id="part3" method ="post" action = "handler.php">
       <?php
         session_start();
+         $_SESSION['override']=$_POST['owner'];
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_SESSION[email]' AND project_name = '$_POST[title]' ");		// Query template
+        	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>	
     <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
     <hr>
@@ -93,7 +95,7 @@
         session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
-        	where creator = '$_SESSION[email]' AND project_name = '$_POST[title]' ");		// Query template
+        	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
         $row    = pg_fetch_assoc($result) ; ?>		
       <p><span>Email :</span> <?php echo $row["creator"] ?> </p>
       <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
