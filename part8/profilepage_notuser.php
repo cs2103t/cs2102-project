@@ -88,7 +88,7 @@
 <section class="mainContent"> 
   <!-- Contact details -->
   <section class="section1">
-    <h2 class="sectionTitle">Content Holder 1</h2>
+    <h2 class="sectionTitle">Owner details</h2>
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">

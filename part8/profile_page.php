@@ -47,7 +47,7 @@
 <header>
   <div class="profileLogo"> 
     <!-- Profile logo. Add a img tag in place of <span>. -->
-      <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>LOGO</span></p>
+      <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>Project</span></p>
   </div>
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()">
@@ -85,7 +85,7 @@
 <section class="mainContent"> 
   <!-- Contact details -->
   <section class="section1">
-    <h2 class="sectionTitle">Content Holder 1</h2>
+    <h2 class="sectionTitle">Owner details</h2>
     <hr class="sectionTitleRule">
     <hr class="sectionTitleRule2">
     <div class="section1Content">
