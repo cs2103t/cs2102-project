@@ -32,7 +32,7 @@
             if($srow[0])
             {   
                 echo "<h1>Registration successful</h1>";
-                echo "<p>Your account was successfully created. Please <a href=\"testing.php\">click here to login</a>.</p>";
+                echo "<p>Your account was successfully created. Please <a href=\"login2-css.php\">click here to login</a>.</p>";
             }
             else
             {   

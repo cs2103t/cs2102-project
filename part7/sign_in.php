@@ -11,11 +11,11 @@
             $password = $_POST['password'];
             $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");
             $result = pg_query($db, "SELECT * FROM account WHERE account_email = '$email' AND account_password = '$password'");
-            $row    = pg_fetch_row($result);
-            if ($row[0]) {
+            $row    = pg_fetch_assoc($result);
+            if ($row) {
                 session_start();
                 $_SESSION['email'] = $email;
-                $_SESSION['is_admin'] = $row[2];
+                $_SESSION['is_admin'] = $row['is_admin'];
                 echo "Sign in succesful!";?>
                 <script type="text/javascript">window.location = "http://localhost/demo/part7/testing.php"</script>;<?php
             }

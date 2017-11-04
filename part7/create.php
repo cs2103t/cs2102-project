@@ -18,8 +18,9 @@
         'http://tempusfilms.com/wp-content/uploads/2014/04/facebook_no_photo.jpg')";
 		$result = pg_query($db,$query);
 		if (!$result) {
-            
             echo "create failed !";
+            echo "<br>";
+            echo "you may have created a project with the same title";
         } else {
             echo "create successful!";
         }

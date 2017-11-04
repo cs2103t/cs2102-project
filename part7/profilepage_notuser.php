@@ -143,14 +143,8 @@
       </div>
       <div>
         <form id="part1" method ="post" onsubmit="return validate()" action = "handler.php">
-        <?php
-        session_start();
-        $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
-        $q2 = "SELECT SUM(amount) as amt From invest WHERE creator= '$creator' AND project_name= '$title' ";
-        $results = pg_query($db,$q2); //find bank account
-        $rows = pg_fetch_assoc($results);
-        ?>
-        <label>donation amount</label><input type ="text" name="funds" id= "funds" value = <?php echo $rows["amt"]  ?> >
+
+        <label>donation amount</label><input type ="text" name="funds" id= "funds" >
         <input type ="submit" name="donate" id= "donate" value ="donate">
       </div>
     </form>
