@@ -22,15 +22,15 @@
     $result = pg_query($db, $query );
         if (!$result) {
             echo "Update failed!!";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         } else {
             echo "Update successful!";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
     }
     else{
         echo "wrong password";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
     }
     }
     if (isset($_POST['donate'])) {
@@ -49,17 +49,17 @@
             $result = pg_query($db,$query);
             if (!$result) {
                 echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
             } else {
                 $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
                     echo "donate successful!";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
                 }
                 else{
                     echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
                 }
             }
         }
@@ -70,18 +70,18 @@
             $result = pg_query($db,$query);
             if (!$result) {
                 echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
             } 
             else {
                 $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
                     echo "donate successful!";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
                 }
                 else{
                     echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
                 }
             }
             

@@ -8,11 +8,11 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
         $result2 =pg_query($db,$sql2); 
         if($result2){
                 echo "delete success";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
         else{
             echo "delete failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
         }
     if(isset($_POST['delete_u'])){
@@ -31,16 +31,16 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
         $result4 =pg_query($db,$sql4); 
         if($result4){
                 echo "deleted user successfully";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
         else{
             echo "delete failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
         }
         else{
             echo "user does not exists";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         }
         }
 

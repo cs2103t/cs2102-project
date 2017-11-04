@@ -57,15 +57,16 @@
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
-    <img src="http://tempusfilms.com/wp-content/uploads/2014/04/facebook_no_photo.jpg" alt="picture" style="width:250px;height:228px;">  
+    <img src="http://tempusfilms.com/wp-content/uploads/2014/04/facebook_no_photo.jpg" alt="picture" style="width:260px;height:230px;">  
     </div>
   <!-- Identity details -->
   <section class="profileHeader"> 
-    <h1>Title :  </h1>
+     <form name="part3" id="part3" method ="post" action = "create.php" >
+    <h1>Title :  <input type="text" name="project_name" id="project_name" ></h1>
     <hr>
     <h1>Description :</h1>
     <br>
-    <textarea name="description" id="description" form="part1" ></textarea>
+    <textarea name="description" id="description" form="part3" ></textarea>
   </section>
 </header>
 <!-- content -->

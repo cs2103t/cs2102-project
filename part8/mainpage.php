@@ -1,41 +1,91 @@
 <!doctype html>
 <html>
-<header>
-    <! -- user info -->
-    <form id="part1" method ="post" onsubmit="return validate()">
-        <! -- include from user data -->
-        <span>User: <?php session_start(); echo $_SESSION['email']; ?> </span>
-    </form>
-</header>
+
+<head>
+<meta charset="utf-8">
+<title>Project Crowdfunding Main Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="mainpage.css" rel="stylesheet" type="text/css">
+<script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
+</head>
+
 <body>
+<div id="mainWrapper">
+<!-- Header Content -->
+  <header> 
+    <!-- This is the header content. It contains Logo and User profile -->
+    <div id="logo"> <!-- <img src="logoImage.png" alt="sample logo"> --> 
+      <!-- Company Logo text --> 
+      Crowdfunding </div>
+	<!-- user info -->
+    <div id="headerText"> Welcome back, <?php session_start(); echo $_SESSION['email']; ?> </div>
+	<!-- logout button -->
+	<div id="headerLinks"><a href="login2-css.php"> Logout </a></div>
+  </header>
+
+  <section id="offer"> 
+    <!-- Banner -->
+    <h2>View Projects</h2>
+  </section>
+  
+
+  
+  <div id="content">
+  <section class="sidebar">
+  
     <form method ="post" action= "mainpage.php" >
-    <?php session_start();
-        $page_l=$_SESSION['pagel']; // page lower limit
-        ?>
-    <br>
-    <p> view projects </p>
-    <label>title : </label><input type ="text" name ="titl" id ="var1">
-    <input type="submit" name ="search" value ="search" >
-    <br>
-    <input type="hidden" name="prev10_v" value =<?php session_start(); echo $page_l; ?>>
-    <input type="submit" name="prev10" value ="previous 10">
-    <input type="submit" name="next10" value ="next 10">
-</form>
-    <form method ="post" action="createprofile.php">
-        <label>new project?</label>
-        <input type="submit" name="redirect" value = "create new project" >
+	  <?php session_start();
+			$page_l=$_SESSION['pagel']; // page lower limit
+	  ?>
+    <label>Project Title: </label>
+	<input type ="text" name ="titl" id ="var1">
+	<br />
+	<br />
+    <input type="submit" id = "search" name ="search" value ="search">
     </form>
-    <br>
-<?php
-    session_start();
-    $is_admin=$_SESSION['is_admin'];
-    if($is_admin=='T'){
-        echo "<form method =post action=deletion.php >
-        <label>remove a user</label>
+	<br />
+	<br />
+	<br />
+	<br />
+    <form method ="post" action="createprofile.php">
+        <label>Create new project?</label>
+		<br />
+		<br />
+        <input type="submit" id = "search" name="redirect" value = "create new project" >
+    </form>
+	<br />
+	<br />
+	<br />
+	<br />
+    <?php
+      session_start();
+      $is_admin=$_SESSION['is_admin'];
+      if($is_admin=='T'){
+      echo "<form method =post action=deletion.php>
+        <label>Delete User: </label>
         <input type =text name=user_d >
-        <input type=submit name=delete_u value =delete user> </form>";
-    }
-?>
+		<br />
+		<br />
+        <input type=submit id = search name=delete_u value =delete user></form>";
+      }
+      ?>
+  </section>
+  
+  <section class="mainContent">
+	  <form method ="post" action= "mainpage.php" >
+		  <?php session_start();
+				$page_l=$_SESSION['pagel']; // page lower limit
+		  ?>
+	  <input type="hidden" name="prev10_v" value = <?php session_start(); echo $page_l; ?>>
+	  <input type="submit" id = "prevButton" name="prev10" value ="Previous Page" style = "float: left">
+	  <input type="submit" id = "nextButton" name="next10" value ="Next Page" style = "float: right">
+	  </form>
+
+<br />
+<br />
+<br />
+<br />
+  
 <?php
 // Create connection
 include 'sign_in.php';
@@ -45,7 +95,6 @@ $is_admin=$_SESSION['is_admin'];
 $_SESSION['pagel']=$page_l;
 $page_l=$_SESSION['pagel'];
 $db = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");
-
 if(empty($page_l)){
     $page_l=0;
 }
@@ -73,15 +122,39 @@ else{
 }
 $result = pg_query($db,$sql);
 $i = 1;
-echo "<table>";
-echo "<th> number</th>";
-echo "<th>picture</th>";
-echo "<th>project name</th>";   
-echo "<th>creator</th>";
-echo "<th>target</th>";
-echo "<th>raised</th>";
-echo "<th>click to go</th>";
-echo "<th>delete</th>";
+echo 
+"<style>
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+</style>";
+echo '<table id = "t01">';
+echo "<th>Number</th>";
+echo "<th>Picture</th>";
+echo "<th>Project Name</th>";   
+echo "<th>Creator</th>";
+echo "<th>Target</th>";
+echo "<th>Raised</th>";
+echo "<th>Link</th>";
+echo "<th>Delete</th>";
 while($row = pg_fetch_assoc($result)) {
     $image = $row['picture_url'];
     $imageData = base64_encode(file_get_contents($image));
@@ -126,7 +199,13 @@ echo "</table>";
 
 
 ?> 
+</section>
+</div>
 
+<div id = "footer">
 
+</div>
+
+</div>
 </body>
 </html>
