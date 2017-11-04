@@ -21,13 +21,16 @@
     picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[email]' AND project_name= '$_POST[project_name]' " ;
     $result = pg_query($db, $query );
         if (!$result) {
-            echo "Update failed!!";
+            echo "Update failed!!";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
         } else {
-            echo "Update successful!";
+            echo "Update successful!";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
         }
     }
     else{
-        echo "wrong password";
+        echo "wrong password";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
     }
     }
     if (isset($_POST['donate'])) {
@@ -45,15 +48,18 @@
             WHERE account_email ='$email' AND project_name ='$title' AND creator = '$creator'  "; 
             $result = pg_query($db,$query);
             if (!$result) {
-                echo "donate failed";
+                echo "donate failed";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
             } else {
                 $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
-                    echo "donate successful!";
+                    echo "donate successful!";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
                 }
                 else{
-                    echo "donate failed";
+                    echo "donate failed";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
                 }
             }
         }
@@ -63,16 +69,19 @@
             '$_POST[funds]') ";
             $result = pg_query($db,$query);
             if (!$result) {
-                echo "donate failed";
+                echo "donate failed";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
             } 
             else {
                 $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
-                    echo "donate successful!";
+                    echo "donate successful!";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
                 }
                 else{
-                    echo "donate failed";
+                    echo "donate failed";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
                 }
             }
             

@@ -20,9 +20,11 @@
 		if (!$result) {
             echo "create failed !";
             echo "<br>";
-            echo "you may have created a project with the same title";
+            echo "you may have created a project with the same title";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
         } else {
-            echo "create successful!";
+            echo "create successful!";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
         }
         
 	}

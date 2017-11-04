@@ -48,7 +48,7 @@
 <header>
   <div class="profileLogo"> 
     <!-- Profile logo. Add a img tag in place of <span>. -->
-      <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>LOGO</span></p>
+      <p class="logoPlaceholder"><!-- <img src="logoImage.png" alt="sample logo"> --><span>project</span></p>
   </div>
     <! -- user info -->
     <form id="part1" method ="post" onsubmit="return validate()">

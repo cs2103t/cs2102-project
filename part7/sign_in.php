@@ -17,7 +17,7 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['is_admin'] = $row['is_admin'];
                 echo "Sign in succesful!";?>
-                <script type="text/javascript">window.location = "http://localhost/demo/part7/testing.php"</script>;<?php
+                <script type="text/javascript">window.location = "http://localhost/demo/part7/mainpage.php"</script>;<?php
             }
     
             else {
