@@ -154,8 +154,9 @@
 
         <label>donation amount</label><input type ="text" name="funds" id= "funds" >
         <input type ="submit" name="donate" id= "donate" value ="donate">
+        </form>
       </div>
-    </form>
+
     <script>
         // get funds raised from pbt = progress bar text
         var funds=document.getElementById("raised");

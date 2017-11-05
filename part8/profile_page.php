@@ -77,7 +77,9 @@
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>	
+        $row    = pg_fetch_assoc($result) ;
+          $_SESSION['project_name']=$row["project_name"];
+        ?>	
     <h1>Title :  <input type="text" name="project_name" id="project_name" value ="<?php echo $row["project_name"] ?>" ></h1>
     <hr>
     <h2>Description :</h2>
@@ -100,13 +102,14 @@
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>		
+        $row    = pg_fetch_assoc($result) ;
+        $_SESSION['dummy']=$row["raised"];?>		
       <p><span>Email :</span> <?php echo $row["creator"] ?> </p>
       <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
       <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
       <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
-      <p><span>funds raised: </span> <?php  echo $row["raised"] ?> </p>
+      <p><span>funds raised: </span>  <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
       <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= <?php echo $row["picture_url"] ?> ></p>

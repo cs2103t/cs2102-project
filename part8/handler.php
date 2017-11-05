@@ -18,6 +18,7 @@
     $result = pg_query($db, "SELECT * FROM account WHERE account_email = '$_SESSION[email]' AND account_password = '$_POST[password2]' ");
     $row    = pg_fetch_assoc($result);
     if ($row|| $is_admin == 'T'){
+        if($is_admin !='T'){
     $query ="UPDATE project SET 
 	description = '$_POST[description]',
 	created = '$_POST[created]' ,
@@ -26,9 +27,30 @@
 	target = '$_POST[target]',
 	completed = '$_POST[completed]' ,
 	bankinfo = '$_POST[bankinfo]',
-    picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_POST[project_name]' " ;
+    picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_SESSION[project_name]' " ;
+        }
+        else{
+            $dummy=$_SESSION['dummy'];
+            $dum =$_POST[raised] - $dummy;
+            $proj_name=$_SESSION['project_name'];
+            $sql = "INSERT INTO invest VALUES('dummygp12',
+            '$_SESSION[project_name]','$_SESSION[override]',
+            '$dum') ";
+            $result1 = pg_query($db,$sql);
+            $query ="UPDATE project SET 
+    project_name= '$_POST[project_name]' ,
+	description = '$_POST[description]',
+	created = '$_POST[created]' ,
+    raised = '$_POST[raised]',
+	project_start = '$_POST[project_start]',
+	project_end = '$_POST[project_end]',
+	target = '$_POST[target]',
+	completed = '$_POST[completed]' ,
+	bankinfo = '$_POST[bankinfo]',
+    picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_SESSION[project_name]' " ;
+        }
     $result = pg_query($db, $query );
-        if (!$result) {
+        if (!$result ) {
             echo "Update failed!!";?>
             <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
         } else {
@@ -46,32 +68,7 @@
         $title=$_SESSION['title'];
         $creator=$_SESSION['creator'];
         $email =$_SESSION['email'];
-        $q1 = "SELECT * from invest WHERE project_name ='$title' AND creator = '$creator' 
-        AND account_email ='$email' ";
         $result = pg_query($db,$q1); //find bank account
-        $row   = pg_fetch_assoc($result) ;
-        $donation = $row[amount] + $_POST[funds];
-        if ($row){ // means he donated before
-            $query = "UPDATE invest SET amount = '$donation'
-            WHERE account_email ='$email' AND project_name ='$title' AND creator = '$creator'  "; 
-            $result = pg_query($db,$query);
-            if (!$result) {
-                echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
-            } else {
-                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
-                $result2 = pg_query($db,$sql);
-                if($result2){
-                    echo "donate successful!";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
-                }
-                else{
-                    echo "donate failed";?>
-            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
-                }
-            }
-        }
-        else{
             $query = "INSERT INTO invest VALUES('$email',
             '$title','$creator',
             '$_POST[funds]') ";
@@ -81,7 +78,7 @@
             <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
             } 
             else {
-                $sql = "UPDATE project SET raised ='$donation' WHERE creator ='$creator' AND project_name= '$title' ";
+                $sql = "UPDATE project SET raised = (SELECT SUM(amount) FROM invest WHERE creator ='$creator' AND project_name= '$title' ) WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
                 if($result2){
                     echo "donate successful!";?>
@@ -94,6 +91,6 @@
             }
             
         }
-	}
+	
     ?> 
 </html>
