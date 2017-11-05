@@ -180,7 +180,7 @@ echo "<th>Creator</th>";
 echo "<th>Target</th>";
 echo "<th>Raised</th>";
 echo "<th>Link</th>";
-echo "<th>Delete</th>";
+echo "<th>Remarks</th>";
 while($row = pg_fetch_assoc($result)) {
     $image = $row['picture_url'];
     $imageData = base64_encode(file_get_contents($image));

@@ -17,7 +17,7 @@
         '$_POST[created]',
 		'$_POST[project_start]',
         '$_POST[project_end]', 
-        'false', 
+        'not completed', 
         '$_POST[description]',
 		'$_POST[bankinfo]', 
         'http://tempusfilms.com/wp-content/uploads/2014/04/facebook_no_photo.jpg')";

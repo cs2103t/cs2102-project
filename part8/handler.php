@@ -84,7 +84,7 @@
                 $row    = pg_fetch_assoc($result) ;
             if( $row["raised"] >=$row["target"]){
               //update complete status to true
-              $sql ="UPDATE project SET completed='true' WHERE creator = '$creator' AND project_name = '$title'";
+              $sql ="UPDATE project SET completed='completed' WHERE creator = '$creator' AND project_name = '$title'";
               $result=pg_query($db,$sql);
             }
                 if($result2){
