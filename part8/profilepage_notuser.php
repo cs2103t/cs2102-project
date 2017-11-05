@@ -98,10 +98,14 @@
     <div class="section1Content">
         <form id="part2">
       <?php
+        session_start();
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[not]' AND project_name = '$_POST[title2]' ");		// Query template
-        $row    = pg_fetch_assoc($result) ; ?>
+        $row    = pg_fetch_assoc($result) ;
+        $_SESSION['override']=$row['raised'];
+        $override=$_SESSION['override'];
+            ?>
       <p><span>Email : </span> <?php echo $row["creator"] ?> </p>
       <p><span>created Date : </span><?php echo $row["created"] ?></p>
       <p><span>Start Date : </span><?php echo $row["project_start"] ?></p>

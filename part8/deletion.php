@@ -79,8 +79,8 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
             $new= $_POST['new'];
             $cfm=$_POST['cfm'];
             if($new==$cfm){
-                if($is_admin=='T'){
-                    $sql1="UPDATE account SET account_password='$_POST[new]' WHERE account_email= '$_POST[user_d]' ";
+                if($is_admin == 'T'){
+                    $sql1= "UPDATE account SET account_password= '$_POST[new]' WHERE account_email= '$_POST[user_d]' ";
                 }
                 else{
                     $sql1 = "UPDATE account SET account_password='$_POST[new]' WHERE account_email= '$_SESSION[email]' ";

@@ -75,12 +75,23 @@
 		<br />
 		<br />
         <input type="password" name="old" id="search" placeholder="Old Password"/>
-        <input type="password" name="new" id="search" placeholder="New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-        <input type="password" name="cfm" id="search" placeholder="confirm New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
+        <?php
+          session_start();
+      $is_admin=$_SESSION['is_admin'];
+      if($is_admin !='T'){
+        echo "
+        <input type=password name=new id=search placeholder=New Password title= 'Password min 8 characters. At least one UPPERCASE and one lowercase letter' required pattern=(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$ />";
+        echo "
+        <input type=password name=cfm id=search placeholder=confirm New Password title='Password min 8 characters. At least one UPPERCASE and one lowercase letter' required pattern=(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$ /> ";
+      }
+      else{
+          echo "
+          <input type=password name=new id=search placeholder=New Password />
+        <input type=password name=cfm id=search placeholder=confirm New Password />";
+      }
+        ?>
         <input type="submit" id = "search" name="change" value = "change password" >
     </form>
-      
-    
   </section>
   
   <section class="mainContent">
@@ -92,7 +103,6 @@
 	  <input type="submit" id = "prevButton" name="prev10" value ="Previous Page" style = "float: left">
 	  <input type="submit" id = "nextButton" name="next10" value ="Next Page" style = "float: right">
 	  </form>
-
 <br />
 <br />
 <br />
