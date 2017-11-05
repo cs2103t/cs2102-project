@@ -25,7 +25,6 @@
 	project_start = '$_POST[project_start]',
 	project_end = '$_POST[project_end]',
 	target = '$_POST[target]',
-	completed = '$_POST[completed]' ,
 	bankinfo = '$_POST[bankinfo]',
     picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_SESSION[project_name]' " ;
         }
@@ -80,6 +79,14 @@
             else {
                 $sql = "UPDATE project SET raised = (SELECT SUM(amount) FROM invest WHERE creator ='$creator' AND project_name= '$title' ) WHERE creator ='$creator' AND project_name= '$title' ";
                 $result2 = pg_query($db,$sql);
+                $result = pg_query($db, "SELECT * FROM project 
+        	   where creator = '$creator' AND project_name = '$title' ");		// Query template
+                $row    = pg_fetch_assoc($result) ;
+            if( $row["raised"] >=$row["target"]){
+              //update complete status to true
+              $sql ="UPDATE project SET completed='true' WHERE creator = '$_POST[not]' AND project_name = '$_POST[title2]'";
+              $result=pg_query($db,$sql);
+            }
                 if($result2){
                     echo "donate successful!";?>
             <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php

@@ -101,6 +101,7 @@
 		  ?>
 	  <input type="hidden" name="prev10_v" value = <?php session_start(); echo $page_l; ?>>
 	  <input type="submit" id = "prevButton" name="prev10" value ="Previous Page" style = "float: left">
+      <input type="submit" id = "prevButton" name="compl" value ="completion status" style = "float: center">
 	  <input type="submit" id = "nextButton" name="next10" value ="Next Page" style = "float: right">
 	  </form>
 <br />
@@ -138,6 +139,9 @@ if (isset($_POST['search'])){
     else{
         $sql ="select * from project where lower(project_name) like '$_POST[titl]%' or upper(project_name) like '$_POST[titl]%' ORDER BY project_name ASC LIMIT 10 OFFSET $page_l ";
     }
+}
+if(isset($_POST['compl'])){
+    $sql="select * from project WHERE completed ='true' ORDER BY project_name ASC LIMIT 10 OFFSET $page_l ";
 }
 else{
      $sql="select * from project ORDER BY project_name ASC LIMIT 10 OFFSET $page_l ";
