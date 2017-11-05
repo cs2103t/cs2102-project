@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <?php
     include 'sign_in.php';
   	// Connect to the database. Please change the password in the following line accordingly
@@ -7,7 +12,7 @@
 		$query = "INSERT INTO project VALUES ( 
         '$_POST[project_name]', 
         '$_SESSION[email]',
-        '$_POST[raised]', 
+        '0', 
 		'$_POST[target]',
         '$_POST[created]',
 		'$_POST[project_start]',
@@ -29,3 +34,4 @@
         
 	}
 ?>
+</html>

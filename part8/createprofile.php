@@ -1,5 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+    <header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <script> /* all functions is here */
     function validate(){ /* to check if user have not missed out any input */
         var title =document.getElementById('title');
@@ -54,6 +57,7 @@
     <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
         <span>User: <?php session_start(); echo $_SESSION['email']; ?> </span>
+        <div id="headerLinks"><a href="index.php"> Logout </a></div>
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
@@ -84,7 +88,6 @@
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" ></p>
       <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" ></p>
       <p><span>funds needed: </span> <input type="text" name="target" id="target"  ></p>
-      <p><span>funds raised: </span> <input type="text" name="raised" id="raised"  ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" ></p>
     </div>
   <aside class="externalResourcesNav">

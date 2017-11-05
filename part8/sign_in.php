@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <body>
 <?php
     if (isset($_POST['submit'])) {
@@ -22,8 +25,12 @@
     
             else {
                 echo "E-mail or Password entered is incorrect.";
+                echo "<br>";
+                echo "<br>";
+                echo "go to login page to try again <a href=\"index.php\">click here to login</a>.";
             }
         }
     }
 ?>
 </body>
+</html>

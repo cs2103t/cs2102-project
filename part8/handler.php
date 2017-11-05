@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <?php
     include "sign_in.php";
     session_start();
@@ -18,7 +23,6 @@
 	project_start = '$_POST[project_start]',
 	project_end = '$_POST[project_end]',
 	target = '$_POST[target]',
-	raised = '$_POST[raised]' ,
 	completed = '$_POST[completed]' ,
 	bankinfo = '$_POST[bankinfo]',
     picture_url = '$_POST[picture_url]' WHERE creator ='$_SESSION[override]' AND project_name= '$_POST[project_name]' " ;
@@ -91,3 +95,4 @@
         }
 	}
     ?> 
+</html>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html >
+<header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <head>
   <meta charset="UTF-8">
   <title>Sign up form</title>
@@ -35,7 +38,7 @@
             if($srow[0])
             {   
                 echo "<h1>Registration successful</h1>";
-                echo "<p>Your account was successfully created. Please <a href=\"login2-css.php\">click here to login</a>.</p>";
+                echo "<p>Your account was successfully created. Please <a href=\"index.php\">click here to login</a>.</p>";
             }
             else
             {   
@@ -52,12 +55,12 @@ else {
   <form name = "insert", action = "registerPage.php", method = "POST">
   <h1>Sign up</h1><br/>
   <span class="input"></span>
-  <input type="text" name="name" placeholder="Full name" title="Format: Xx[space]Xx (e.g. Alex Cican)" autofocus autocomplete="off" required pattern="^\w+\s\w+$" />
+  <input type="text" name="name" placeholder="Full name"  />
   <span class="input"></span>
   <input type="email" name="email" placeholder="Email address" required />
   <span id="passwordMeter"></span>
   <input type="password" name="password" id="password" placeholder="Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-  <button type="submit" value="Sign Up" title="Submit form" class="icon-arrow-right"><span>Sign up</span></button>
+  <button type="submit" name="submit" value="Sign Up" title="Submit form" class="icon-arrow-right"><span>Sign up</span></button>
   </form>
   </ul>
 

@@ -1,5 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+    <header>
+    <title> Group12 Crowdfunding </title>
+    </header>
 <script> /* all functions is here */
     function validate(){ /* to check if user have not missed out any input */
         var title =document.getElementById('title');
@@ -53,7 +56,7 @@
     <form id="part1" method ="post" onsubmit="return validate()">
         <! -- include from user data -->
         <span>User:  <?php session_start(); echo $_SESSION['email']; ?></span>
-        <div id="headerLinks"><a href="login2-css.php"> Logout </a></div>
+        <div id="headerLinks"><a href="index.php"> Logout </a></div>
     </form> 
   <div class="profilePhoto"> 
     <!-- Profile photo --> 
@@ -93,6 +96,7 @@
     <div class="section1Content">
      <?php
         session_start();
+        $is_admin=$_SESSION['is_admin'];
         $db     = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres password=fbcredits");	
         $result = pg_query($db, "SELECT * FROM project 
         	where creator = '$_POST[owner]' AND project_name = '$_POST[title]' ");		// Query template
@@ -102,7 +106,7 @@
       <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
       <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
       <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
-      <p><span>funds raised: </span> <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
+      <p><span>funds raised: </span> <?php  echo $row["raised"] ?> </p>
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" value= "<?php echo $row["bankinfo"] ?>" ></p>
       <p><span>insert image address to update images </span> <input type="text" name="picture_url" id="picture_url" value= <?php echo $row["picture_url"] ?> ></p>
