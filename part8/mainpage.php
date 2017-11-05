@@ -47,8 +47,6 @@
     </form>
 	<br />
 	<br />
-	<br />
-	<br />
     <form method ="post" action="createprofile.php">
         <label>Create new project?</label>
 		<br />
@@ -57,34 +55,32 @@
     </form>
 	<br />
 	<br />
-	<br />
-	<br />
-    <form method ="post" action="deletion.php">
-        <label>Create new project?</label>
-		<br />
-		<br />
-        <input type="password" name="old" id="search" placeholder="Old Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-        <input type="password" name="new" id="search" placeholder="New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-        <input type="password" name="cfm" id="search" placeholder="confirm New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-        <input type="submit" id = "search" name="change" value = "change password" >
-    </form>
-      <br />
-      <br />
-      <br />
-      <br />
-    <?php
+      <form method =post action=deletion.php>
+      <?php
       session_start();
       $is_admin=$_SESSION['is_admin'];
       if($is_admin=='T'){
-      echo "<form method =post action=deletion.php>
+      echo "
         <label>User: </label>
         <input type =text name=user_d >
 		<br />
 		<br />
         <input type=submit id = search name=reset value =reset password>
-        <input type=submit id = search name=delete_u value =delete user></form>";
+        <input type=submit id = search name=delete_u value =delete user>";
       }
       ?>
+      <br />
+      <br />
+        <label>Change password</label>
+		<br />
+		<br />
+        <input type="password" name="old" id="search" placeholder="Old Password"/>
+        <input type="password" name="new" id="search" placeholder="New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
+        <input type="password" name="cfm" id="search" placeholder="confirm New Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
+        <input type="submit" id = "search" name="change" value = "change password" >
+    </form>
+      
+    
   </section>
   
   <section class="mainContent">

@@ -71,13 +71,20 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
      if(isset($_POST['change'])){
          session_start();
          $email=$_SESSION['email'];
+         $is_admin=$_SESSION['is_admin'];
         $sql = "select * from account where account_email ='$_SESSION[email]' AND account_password='$_POST[old]' ";
         $result1=pg_query($db,$sql);
-        if($result1){
+         $row= pg_fetch_assoc($result1);
+        if($row || $is_admin== 'T'){
             $new= $_POST['new'];
             $cfm=$_POST['cfm'];
             if($new==$cfm){
-            $sql1 = "UPDATE account SET account_password='$_POST[new]' WHERE account_email= '$_SESSION[email]' ";
+                if($is_admin=='T'){
+                    $sql1="UPDATE account SET account_password='$_POST[new]' WHERE account_email= '$_POST[user_d]' ";
+                }
+                else{
+                    $sql1 = "UPDATE account SET account_password='$_POST[new]' WHERE account_email= '$_SESSION[email]' ";
+                }
             $result2 = pg_query($db,$sql1);
             if($result2){
                 echo "password changed sucessfully";?>
@@ -93,6 +100,10 @@ $db  = pg_connect("host=localhost port=5432 dbname=Project1 user=postgres passwo
             <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
             }
         }
+         else{
+             echo "please key in your previous password";?>
+            <script type="text/javascript">window.location = "http://localhost/demo/part8/mainpage.php"</script>;<?php
+         }
      }
     
 
