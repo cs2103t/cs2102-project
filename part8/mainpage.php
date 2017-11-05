@@ -101,7 +101,7 @@
 		  ?>
 	  <input type="hidden" name="prev10_v" value = <?php session_start(); echo $page_l; ?>>
 	  <input type="submit" id = "prevButton" name="prev10" value ="Previous Page" style = "float: left">
-      <input type="submit" id = "prevButton" name="compl" value ="finished" style = "float: center">
+      <input type="submit" id = "prevButton" name="compl" value ="Finished" style = "float: center">
 	  <input type="submit" id = "nextButton" name="next10" value ="Next Page" style = "float: right">
 	  </form>
 <br />
