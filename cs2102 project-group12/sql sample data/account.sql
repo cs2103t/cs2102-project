@@ -1,0 +1,20 @@
+--create account-
+INSERT INTO account VALUES('Adam Lee','adam1993@gmail.com','hunter2', 'F');
+INSERT INTO account VALUES('Zhang Ji Yi', 'jiyi@gmail.com','jiyi123', 'T');
+INSERT INTO account VALUES('Zack Tan', 'zackyt@gmail.com','abc123', 'F' );
+INSERT INTO account VALUES('Daniel Koh', 'daniel@gmail.com','daniel123', 'T');
+INSERT INTO account VALUES('Xiao Ming', 'goodmorning@gmail.com','ggwp', 'F');
+INSERT INTO account VALUES('Sun Bang Jie', 'bangjie@gmail.com','bangjie123', 'T');
+INSERT INTO account VALUES('Chia Wen Kai', 'wenkai@gmail.com','wenkai123', 'T');
+INSERT INTO account VALUES('Bruce Li', 'bruceli@hotmail.com','123321', 'F');
+INSERT INTO account VALUES('Da Ming', 'edgydude1888@gmail,com','daming123', 'F');
+INSERT INTO account VALUES('Jacky Mao', 'oldguy88@gmail.com','ee123', 'F');
+INSERT INTO account VALUES('Shi Ming Yi', 'rencicharityfund@gmail.com','notascammer', 'F');
+INSERT INTO account VALUES('Lee Kong Hee', 'leekonghee@gmail.com','abba123', 'F');
+INSERT INTO account VALUES('Nick Tan', 'nicktan111@hotmail.com','flywin', 'F');
+INSERT INTO account VALUES('Susan Tan', 'susantan99@hotmail.com','tan123', 'F');
+INSERT INTO account VALUES('Larry Su', 'wewlad@gmail.com','iamlarry', 'F');
+INSERT INTO account VALUES('Bao Zhong', 'guarantee@hotmail.com','winforsure', 'F');
+INSERT INTO account VALUES('Sam Tan', 'heyimsam@gmail.com','hospital', 'F');
+INSERT INTO account VALUES('Han Fei', 'ma3111@hotmail.com','gewozhan', 'F');
+INSERT INTO account VALUES('Wang Fei', 'wangwang@hotmail.com','zhan', 'F');

@@ -1,0 +1,1 @@
+go to connect.php to change name of database and password
