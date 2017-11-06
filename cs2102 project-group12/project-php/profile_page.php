@@ -3,40 +3,6 @@
     <header>
     <title> Group12 Crowdfunding </title>
     </header>
-<script> /* all functions is here */
-    function validate(){ /* to check if user have not missed out any input */
-        var title =document.getElementById('title');
-        var description=document.getElementById('description');
-        var email =document.getElementById('email');
-        var start_date = document.getElementById('start_date');
-        var end_date = document.getElementById('end_date');
-        var funding = document.getElementById('funding');
-        if (title.value==''){
-            alert('please enter your name');
-            return false;
-        }
-        if (description.value==''){
-            alert('please enter a description');
-            return false;
-        }
-        if (email.value==''){
-            alert('please enter your email');
-            return false;
-        }
-        if (start_date.value==''){
-            alert('please enter your start date');
-            return false;
-        }
-        if (end_date.value==''){
-            alert('please enter your start date');
-            return false;
-        }
-        if (fudning.value==''){
-            alert('please enter your start date');
-            return false;
-        }
-    }
-</script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
