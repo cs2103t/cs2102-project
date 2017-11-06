@@ -105,9 +105,9 @@
         $row    = pg_fetch_assoc($result) ;
         $_SESSION['dummy']=$row["raised"];?>		
       <p><span>Email :</span> <?php echo $row["creator"] ?> </p>
-      <p><span>created Date : </span><input type="text" name="created" id="created" value= "<?php echo $row["created"] ?>" ></p>
-      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" value= "<?php echo $row["project_start"] ?>" ></p>
-      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" value= "<?php echo $row["project_end"] ?>" ></p>
+      <p><span>created Date : </span><input type="text" name="created" id="created"  placeholder="format= yyyy-mm-dd" value= "<?php echo $row["created"] ?>" ></p>
+      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start"  placeholder="format= yyyy-mm-dd" value= "<?php echo $row["project_start"] ?>" ></p>
+      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end"  placeholder="format= yyyy-mm-dd" value= "<?php echo $row["project_end"] ?>" ></p>
       <p><span>funds needed: </span> <input type="text" name="target" id="target" value= "<?php echo $row["target"] ?>" ></p>
       <p><span>funds raised: </span>  <input type="text" name="raised" id="raised" value= "<?php echo $row["raised"] ?>" ></p>
       <p><span>status: </span> <input type="text" name="completed" id="completed" value= "<?php echo $row["completed"] ?>" ></p>

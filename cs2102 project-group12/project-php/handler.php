@@ -18,7 +18,6 @@
         if($is_admin !='T'){
     $query ="UPDATE project SET 
 	description = '$_POST[description]',
-	created = '$_POST[created]' ,
 	project_start = '$_POST[project_start]',
 	project_end = '$_POST[project_end]',
 	target = '$_POST[target]',

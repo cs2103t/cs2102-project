@@ -10,7 +10,7 @@
             echo "E-mail or Password is invalid";
         }
         else {
-            require ('connect.php');
+            include 'connect.php';
             $email = $_POST['email'];
             $password = $_POST['password'];
             $result = pg_query($db, "SELECT * FROM account WHERE account_email = '$email' AND account_password = '$password'");

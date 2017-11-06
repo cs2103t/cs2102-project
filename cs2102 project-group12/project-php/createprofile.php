@@ -82,9 +82,9 @@
     <hr class="sectionTitleRule2">
     <div class="section1Content">
       <p><span>Email : </span> <?php session_start(); echo $_SESSION['email'] ?> </p>
-      <p><span>created Date : </span><input type="text" name="created" id="created" ></p>
-      <p><span>Start Date : </span><input type="text" name="project_start" id="project_start" ></p>
-      <p><span>End Date: </span> <input type="text" name="project_end" id="project_end" ></p>
+      <p><span>created Date : </span><input type="text" name="created"  placeholder="format= yyyy-mm-dd" id="created" ></p>
+      <p><span>Start Date : </span><input type="text" name="project_start"  placeholder="format= yyyy-mm-dd"id="project_start" ></p>
+      <p><span>End Date: </span> <input type="text" name="project_end"  placeholder="format= yyyy-mm-dd" id="project_end" ></p>
       <p><span>funds needed: </span> <input type="text" name="target" id="target"  ></p>
       <p><span>bank info: </span> <input type="text" name="bankinfo" id="bankinfo" ></p>
     </div>
